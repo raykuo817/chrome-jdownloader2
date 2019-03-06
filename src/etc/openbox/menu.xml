@@ -9,7 +9,7 @@
   <item label=" Terminal ">
     <action name="Execute">
 		<execute>
-			gnome-termina
+			gnome-terminal
 		l</execute>
 	</action>
   </item>

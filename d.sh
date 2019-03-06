@@ -1,8 +1,8 @@
 #!/bin/bash
 
+TAG=1.0.1
 NAME=chrome-jdownloader2
 USER=raykuo
-#TAG=1.0.0
 #PARAM='-p 5900:5900  -p 5800:5800  -v /home/ray/Downloads:/dl'
 PARAM='-p 5900:5900  -p 5800:5800'
 
@@ -49,6 +49,11 @@ case $1 in
 	    sudo docker stop $(sudo docker ps -a -q)
 	fi
 	;;
+
+   tag)
+	sudo docker tag $USER/$NAME $USER/$NAME:$TAG
+	;;
+
     *)
 #	echo 'd [build | run | run [bash] | save | del [all] | stop [all]]'
 	while true; do
@@ -60,6 +65,8 @@ case $1 in
 	    echo '6) del all'
 	    echo '7) stop container'
 	    echo '8) stop all'
+	    echo '9) tag version' $TAG
+	    echo 'i) images list'
 	    read -p 'Choise (Ctrl-C to Exit): ' input
 
 	    case $input in
@@ -71,6 +78,8 @@ case $1 in
 		6) ./d.sh del all ;;
 		7) ./d.sh stop ;;
 		8) ./d.sh stop all ;;
+		9) ./d.sh tag ;;
+		i) sudo docker images ;;
 	    esac
 	done
 	;;
