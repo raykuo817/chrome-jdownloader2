@@ -25,7 +25,7 @@
 - 不支援 SSL
 
 - 在 Synology DSM 6.2 上測試
-- 中文輸入法預設切換熱鍵 Ctrl-Alt-Space
+- 中文輸入法預設切換熱鍵 Shift-Space
 
 
 
@@ -63,7 +63,7 @@ VPN客戶端： your_domain:5900
 |                XMODIFIERS | 輸入法使用            | "@im=fcitx" | 請勿變更                                                     |
 |             GTK_IM_MODULE | 輸入法使用            | fcitx       | 請勿變更                                                     |
 |              QT_IM_MODULE | 輸入法使用            | fcitx       | 請勿變更                                                     |
-|               NO_VNC_PORT | noVNC port            | 5800        | 任意可用 port                                                |
+|               NOVNC_PORT | noVNC port            | 5800        | 任意可用 port                                                |
 |                  VNC_PORT | VNC port              | 5900        | 任意可用 port                                                |
 |                    VNC_PW | 連線密碼              | vncpwd      | 空白表示不設密碼                                             |
 |                RESOLUTION | 虛擬螢幕解析度        | 1280x768x16 | 任意可用解析度                                               |

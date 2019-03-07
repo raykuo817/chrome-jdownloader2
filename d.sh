@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TAG=1.0.1
+TAG=1.0.2
 NAME=chrome-jdownloader2
 USER=raykuo
 #PARAM='-p 5900:5900  -p 5800:5800  -v /home/ray/Downloads:/dl'

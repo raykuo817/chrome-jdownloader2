@@ -8,9 +8,11 @@ ARG lang=zh_TW
 RUN apt-get update && \
 	apt-get install -y \
 		wget \
-		xvfb \
-		gnome-terminal \
 		vim \
+		# virtual framebuffer X server for X Version 11
+		xvfb \
+		# Terminal
+		gnome-terminal \
 		# VNC server
 		x11vnc \
 	       # fcitx 輸入法系統
@@ -39,11 +41,11 @@ RUN apt-get update && \
 	locale-gen zh_CN.UTF-8
 
 #
-# 設定輸入法預設切換熱鍵 CTRL-ALT-SPACE
+# 設定輸入法預設切換熱鍵 SHIFT-SPACE
 #
 RUN mkdir -p /root/.config/fcitx && \
 	echo [Hotkey] > /root/.config/fcitx/config && \
-	echo TriggerKey=CTRL_ALT_SPACE >> /root/.config/fcitx/config \
+	echo TriggerKey=SHIFT_SPACE >> /root/.config/fcitx/config \
 	echo SwitchKey=Disabled >> /root/.config/fcitx/config \
 	echo IMSwitchKey=False >> /root/.config/fcitx/config
 
@@ -66,7 +68,8 @@ COPY src/etc/tint2/tint2rc /etc/tint2/tint2rc
 #
 
 RUN apt-get install -y net-tools git && \
-	git clone https://github.com/novnc/noVNC.git /usr/noVNC/
+	git clone https://github.com/novnc/noVNC.git /usr/noVNC/ && \
+	git clone https://github.com/novnc/websockify /usr/noVNC/utils/websockify
 COPY src/index.html /usr/noVNC/index.html
 
 #
@@ -125,7 +128,7 @@ ENV \
 	QT_IM_MODULE=fcitx \
 	#
 	DISPLAY=:0 \
-	NO_VNC_PORT=5800 \
+	NOVNC_PORT=5800 \
 	VNC_PORT=5900 \
 	VNC_PW=vncpwd \
 	RESOLUTION=1280x768x16 \
