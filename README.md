@@ -2,13 +2,15 @@
 
 
 
+
+
 ## 主要功能
 
 - JDownloader2
 
-- Google CHROME 瀏覽器
+- Google CHROME browser
 
-- GUI support
+- Gui Text Editor (edit)
 
 - VNC support
 
@@ -49,6 +51,7 @@ VPN客戶端： your_domain:5900
 - google-chrome-stable
 - fcitx
 - gnome-terminal
+- Edit
 
 
 

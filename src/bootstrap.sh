@@ -30,6 +30,24 @@ fi
 export USEPWD_PARAM
 
 #
+if [ -f /usr/jd2/cfg/org.jdownloader.captcha.v2.solver.browser.BrowserCaptchaSolverConfig.browsercommandline.json ]; then
+    FC="`cat /usr/jd2/cfg/org.jdownloader.captcha.v2.solver.browser.BrowserCaptchaSolverConfig.browsercommandline.json`"
+    if [ "$FC"  == "null" ]; then
+	cp /usr/jd2/org.jdownloader.captcha.v2.solver.browser.BrowserCaptchaSolverConfig.browsercommandline.json /usr/jd2/cfg/
+    fi
+else
+    cp /usr/jd2/org.jdownloader.captcha.v2.solver.browser.BrowserCaptchaSolverConfig.browsercommandline.json /usr/jd2/cfg/
+fi
+if [ -f /usr/jd2/cfg/org.jdownloader.settings.GeneralSettings.browsercommandline.json ]; then
+    FC="`cat /usr/jd2/cfg/org.jdownloader.settings.GeneralSettings.browsercommandline.json`"
+    if [ "$FC"  == "null" ]; then
+	cp /usr/jd2/org.jdownloader.settings.GeneralSettings.browsercommandline.json /usr/jd2/cfg/
+    fi
+else
+    cp /usr/jd2/org.jdownloader.settings.GeneralSettings.browsercommandline.json /usr/jd2/cfg/
+fi
+
+#
 exec supervisord -c /etc/supervisor/supervisord.conf
 
 

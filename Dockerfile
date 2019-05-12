@@ -79,6 +79,8 @@ COPY src/index.html /usr/noVNC/index.html
 RUN wget -q http://installer.jdownloader.org/JDownloader.jar -P /usr/jd2/
 COPY src/JDownloader2.png /usr/jd2/JDownloader2.png
 COPY src/JDownloader2.desktop /usr/share/applications/JDownloader2.desktop
+COPY src/org.jdownloader.captcha.v2.solver.browser.BrowserCaptchaSolverConfig.browsercommandline.json /usr/jd2/
+COPY src/org.jdownloader.settings.GeneralSettings.browsercommandline.json /usr/jd2/
 
 #
 # Install Java SE Runtime Environment 8u192 (Linux 64)
@@ -100,13 +102,18 @@ RUN apt-get install -y gnupg && \
 	apt-get update && \
 	apt-get install -y google-chrome-stable && \
 	rm -f /etc/apt/sources.list.d/google.list
-COPY src/google-chrome.desktop /usr/share/applications/google-chrome.desktop
+COPY src/google-chrome.desktop /usr/share/applications/
+RUN xdg-settings set default-web-browser google-chrome.desktop
 
 #
 # Install supervisor - process control system
 #
 RUN apt-get install -y supervisor
 COPY src/etc/supervisor/  /etc/supervisor/
+
+# install gedit text editor
+RUN apt-get install -y gedit gedit-common
+#COPY src/gedit.desktop /usr/share/applications/
 
 #
 # Default download folder

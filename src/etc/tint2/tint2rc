@@ -155,6 +155,7 @@ launcher_tooltip = 1
 #launcher_item_app = chromium-browser.desktop
 launcher_item_app = google-chrome.desktop
 launcher_item_app = JDownloader2.desktop
+launcher_item_app = gedit.desktop
 
 #-------------------------------------
 # Clock
